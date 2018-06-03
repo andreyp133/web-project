@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <script type="text/javascript">
+        function isPasswordsMatch() {
+            var password = document.getElementById("password").value;
+            var confirmedPassword = document.getElementById("confirmPassword").value;
+            var errorMessage = document.getElementById("errorMessage");
+            if(password !== confirmedPassword){
+                errorMessage.style.display = "";
+                errorMessage.innerHTML = "The password and confirm password fields don't match!";
+                return false;
+            } else {
+                errorMessage.style.display = "none";
+                return true;
+            }
+        }
+
+        function checkLoginAndPassword() {
+            var login = document.getElementById("login").value;
+            var errorMessage = document.getElementById("errorMessage");
+            if(login.length == 0){
+                errorMessage.style.display = "";
+                errorMessage.innerHTML = "Login is empty!";
+                return false;
+            }
+            if(login.length < 4){
+                errorMessage.style.display = "";
+                errorMessage.innerHTML = "Login must have length is minimum at 4 symbol!";
+                return false;
+            } else {
+                var passwordLength = getPasswordLength();
+                if(passwordLength < 6){
+                    errorMessage.style.display = "";
+                    errorMessage.innerHTML = "Password must have length is minimum at 6 symbol!";
+                    return false;
+                } else {
+                    return isPasswordsMatch();
+                }
+            }
+        }
+
+        function getPasswordLength() {
+            var password = document.getElementById("password").value;
+            return password.length;
+        }
+    </script>
+</head>
+<body>
+<form name="registrationForm" method="post" id="registrationForm">
+
+    <div class="row">
+        <div class="form-group col-xs-4"></div>
+        <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <label class="control-label"><h4><strong>Username:</strong></h4></label>
+                <div class="controls">
+                    <label class="text-primary"><h8><strong>- must be at least 4 characters long</strong></h8></label>
+                    <input type="text" class="form-control" id="login" name="login"
+                           placeholder="Username" maxlength="40"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-4"></div>
+        <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <label class="control-label"><h4><strong>Password:</strong></h4></label>
+                <div class="controls">
+                    <label class="text-primary"><h8><strong>- must be at least 6 characters long</strong></h8></label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Password" maxlength="40" onkeyup="isPasswordsMatch();"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-4"></div>
+        <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <label class="control-label"><h4><strong>Confirm password:</strong></h4></label>
+                <div class="controls">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                           placeholder="Confirm password" maxlength="40" onkeyup="isPasswordsMatch();"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" align="center">
+        <div class="col">
+            <input type="submit" id="registrationButton" class="btn btn-success" value="Create account"
+                   formaction="<c:url value='/registration'/>" onclick="return checkLoginAndPassword();">
+            <input type="submit" class="btn btn-success" value="Return back"
+                   formaction="<c:url value='/'/>">
+
+            <h5>
+                Already got a TODO account?
+                <p><input type="submit" class="btn btn-link" value="Sign in"
+                          formaction="<c:url value='/login.jsp'/>"></p>
+            </h5>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

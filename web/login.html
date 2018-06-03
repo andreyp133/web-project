@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            document.getElementById("errorMessage").style.display = "";
+        });
+        function checkLoginAndPassword() {
+            var login = document.getElementById("login").value;
+            var errorMessage = document.getElementById("errorMessage");
+            if(login.length == 0){
+                errorMessage.style.display = "";
+                errorMessage.innerHTML = 'Login is empty!';
+                return false;
+            }
+            var password = document.getElementById("password").value;
+            if(password.length == 0){
+                errorMessage.style.display = "";
+                errorMessage.innerHTML = 'Password is empty';
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<form name="loginForm" method="post" id="loginForm">
+    <div class="row">
+        <div class="form-group col-xs-4"></div>
+        <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <label class="control-label"><h4><strong>Username:</strong></h4></label>
+                <div class="controls">
+                    <input type="text" class="form-control" id="login" name="login"
+                           placeholder="Username" maxlength="40"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-4"></div>
+        <div class="form-group col-xs-4">
+            <div class="control-group required">
+                <label class="control-label"><h4><strong>Password:</strong></h4></label>
+                <div class="controls">
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Password" maxlength="40"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" align="center">
+        <div class="col">
+            <input type="submit" id="logButton" class="btn btn-success" value="Sign in"
+                   formaction="<c:url value='/login'/>" onclick='return checkLoginAndPassword()'>
+            <input type="submit" class="btn btn-success" value="Return back"
+                   formaction="<c:url value='/'/>">
+            <h5>
+                Don't have a TODO account?
+                <p><input type="submit" class="btn btn-link" value="Register now"
+                       formaction="<c:url value='/registration.jsp'/>"></p>
+            </h5>
+        </div>
+    </div>
+</form>
+</body>
+</html>

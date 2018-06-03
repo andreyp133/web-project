@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>web-project</display-name>
+
+    <resource-ref>
+        <description>DB connection pool</description>
+        <res-ref-name>jdbc/web-project</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.MainServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.LoginServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.LogOutServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.RegistrServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TasksUpdateServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.TasksUpdateServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TasksUpdateServlet</servlet-name>
+        <url-pattern>/operation/updatetasks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateTaskServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.CreateTaskServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateTaskServlet</servlet-name>
+        <url-pattern>/operation/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FixingTasksServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.FixingTasksServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FixingTasksServlet</servlet-name>
+        <url-pattern>/operation/fix</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UnfixingTasksServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.UnfixingTasksServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnfixingTasksServlet</servlet-name>
+        <url-pattern>/operation/unfix</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TasksDeleteServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.TasksDeleteServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TasksDeleteServlet</servlet-name>
+        <url-pattern>/operation/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TasksRestoreServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.TasksRestoreServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TasksRestoreServlet</servlet-name>
+        <url-pattern>/operation/restore</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TasksDestroyServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.TasksDestroyServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TasksDestroyServlet</servlet-name>
+        <url-pattern>/operation/destroy</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UploadFileServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.UploadFileServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadFileServlet</servlet-name>
+        <url-pattern>/operation/upload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadFileServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.DownloadFileServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadFileServlet</servlet-name>
+        <url-pattern>/operation/downloadFile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteFileServlet</servlet-name>
+        <servlet-class>
+            by.gsu.epamlab.controllers.DeleteFileServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteFileServlet</servlet-name>
+        <url-pattern>/operation/deleteFile</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+
+
+    <filter>
+        <filter-name>CheckUserAvailabilityFilter</filter-name>
+        <filter-class>by.gsu.epamlab.controllers.filters.CheckUserAvailabilityFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CheckUserAvailabilityFilter</filter-name>
+        <url-pattern>/operation/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CheckUserAbsenceFilter</filter-name>
+        <filter-class>by.gsu.epamlab.controllers.filters.CheckUserAbsenceFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CheckUserAbsenceFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/registration</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthorizationFilter</filter-name>
+        <filter-class>by.gsu.epamlab.controllers.filters.AuthorizationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <session-config>
+        <session-timeout>-1</session-timeout>
+    </session-config>
+</web-app>
